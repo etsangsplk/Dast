@@ -1,0 +1,81 @@
+
+site:
+  server: # each line is a partition, the first is the master site_name:port
+    - ["s0:8000", "s1:8001", "s2:8002"]
+    - ["s3:8100", "s4:8101", "s5:8102"]
+    - ["s6:8200", "s7:8201", "s8:8202"]
+    - ["s9:8300", "s10:8301", "s11:8302"]
+  client: # each line is a partition
+    - ["c1", "c5", "c9"]
+    - ["c2", "c6"]
+    - ["c3", "c7"]
+    - ["c4", "c8"]
+# site_name - process_name map
+process:
+  s0: S1A
+  s1: S1B
+  s2: S1C
+  s3: S2A
+  s4: S2B
+  s5: S2C
+  s6: S3A
+  s7: S3B
+  s8: S3C
+  s9: S4A
+  s10: S4B
+  s11: S4C
+  c1: C1A
+  c2: C2A
+  c3: C3A
+  c4: C4A
+  c5: C1B
+  c6: C2B
+  c7: C3B
+  c8: C4B
+  
+
+host:
+  S1A: 10.22.1.7
+  S1B: 10.22.1.7
+  S1C: 10.22.1.7
+  S2A: 10.22.1.17
+  S2B: 10.22.1.17
+  S2C: 10.22.1.17
+  S3A: 10.22.1.18
+  S3B: 10.22.1.18
+  S3C: 10.22.1.18
+  S4A: 10.22.1.7
+  S4B: 10.22.1.7
+  S4C: 10.22.1.7
+  C1A: 10.22.1.7
+  C2A: 10.22.1.17
+  C3A: 10.22.1.18
+  C4A: 10.22.1.7
+  C1B: 10.22.1.7
+  C2B: 10.22.1.17
+  C3B: 10.22.1.18
+  C4B: 10.22.1.7
+
+# reused as region
+datacenter:
+  10.22.1.7: dc1
+  10.22.1.17: dc2
+  10.22.1.18: dc3
+
+#ocean-vista paramaters
+
+ovparams:
+  aggregate_interval_ms: 5
+  gossip_interval_ms: 10
+  clock_drift_ms: 5  # to differentiate processes on the same host, they will drifted by (-x, x), set to 0 if site on different servers
+
+auxiliaryraft:
+  S1A: 25000
+  S2A: 25001
+  S3A: 25002
+
+edgeconfig:
+  edge_deployment : True
+  client_in_region_rate: 100 # percentage of clients reside in its home region (datacenter id)
+chronosparams:
+  local_sync_interval_ms: 10

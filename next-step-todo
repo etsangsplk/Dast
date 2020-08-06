@@ -1,0 +1,15 @@
+How to get a piece (simpleCommand's output);
+How a piece knows where to send its output; A worst brute force method is to broadcast
+No need ->
+I only need to create a map of input var_id and partition. After a piece is executed, we can know the output and send to the partition accordingly
+SLOG
+SyncLog may come before InsertDis
+
+[Done] the order should be ts:site_id:stretch
+[Done] Sync may get faster than the storeLocal, leading to incosistent execution. 
+[Done] ProposeLocal with ts may come to a node, and the node's ts may be larger than ts already.
+
+[Done] OnDistExe need to change ts
+[Done] Notified txn may already been executed
+[Done] CanExeNeed to be send to all nodes
+[Done] On receiving DistExe, its ts in on_dist_tss is removed, then the generated ts for local may have the same ts.
