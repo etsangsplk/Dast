@@ -1,6 +1,10 @@
 
-## Janus
+## Dast
 
-Code repo for our OSDI '16 paper:
-Consolidating Concurrency Control and Consensus for Commits under Conflicts
+Code repo our paper
+
+Dast: Achieving Both Low Tail-latency and High Scalability for Serializable Distributed Transactions on Edge Computing Nodes.  
+
+
+
 
